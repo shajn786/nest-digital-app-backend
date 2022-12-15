@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface EmployeeDao extends CrudRepository<Employees, Integer> {
@@ -24,4 +25,10 @@ public interface EmployeeDao extends CrudRepository<Employees, Integer> {
     @Query(value = "UPDATE `employees` SET `address`= :address,`email`= :email,`empname`= :empname,`mobno`= :mobno WHERE `id`= :id",nativeQuery = true)
     void updateEmployee(@Param("id") Integer id,@Param("empname") String empname,@Param("address") String address,@Param("email") String email
     ,@Param("mobno") String mobno);
+
+    @Query(value = "SELECT `id`, `address`, `email`, `empcode`, `empname`, `mobno`, `password`, `username` FROM `employees` WHERE `email` = :email AND `password` = :password",nativeQuery = true)
+    List<Employees> employeeAuth(@Param("email") String email,@Param("password") String password);
+
+    @Query(value="SELECT `id`, `address`, `email`, `empcode`, `empname`, `mobno`, `password`, `username` FROM `employees` WHERE `id` = :id",nativeQuery = true)
+    List<Employees> employyeDetails(@Param("id") Integer empid);
 }
