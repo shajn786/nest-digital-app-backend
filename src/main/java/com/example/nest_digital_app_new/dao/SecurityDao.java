@@ -26,4 +26,13 @@ public interface SecurityDao extends CrudRepository<Security, Integer> {
     void updateSecurity(@Param("id") Integer id,@Param("sname") String empname,@Param("address") String address
             ,@Param("mobno") String mobno);
 
+
+    @Query(value = "SELECT `id`, `address`, `mobno`, `password`, `scode`, `sname`, `username` FROM `security` WHERE `username` = :username AND `password` =:password",nativeQuery = true)
+    List<Security> securityAuth(@Param("username") String email,@Param("password") String password);
+
+    @Query(value = "SELECT `id`, `address`, `mobno`, `password`, `scode`, `sname`, `username` FROM `security` WHERE `id` = :id",nativeQuery = true)
+    List<Security>securityDetails(@Param("id") Integer id);
+
+
 }
+

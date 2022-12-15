@@ -16,9 +16,9 @@ public class LeaveCount {
     private int id;
     private String empid;
     private String year;
-    private int casual_leave;
-    private int sick_leave;
-    private int special_leave;
+    private long casual_leave;
+    private long sick_leave;
+    private long special_leave;
 
     public LeaveCount() {
     }
@@ -56,27 +56,27 @@ public class LeaveCount {
         this.year = year;
     }
 
-    public int getCasual_leave() {
+    public long getCasual_leave() {
         return casual_leave;
     }
 
-    public void setCasual_leave(int casual_leave) {
-        this.casual_leave = casual_leave;
+    public void setCasual_leave(long casual_leave) {
+        this.casual_leave = this.casual_leave-casual_leave;
     }
 
-    public int getSick_leave() {
+    public long getSick_leave() {
         return sick_leave;
     }
 
-    public void setSick_leave(int sick_leave) {
-        this.sick_leave = sick_leave;
+    public void setSick_leave(long sick_leave) {
+        this.sick_leave = this.sick_leave-sick_leave;
     }
 
-    public int getSpecial_leave() {
+    public long getSpecial_leave() {
         return special_leave;
     }
 
-    public void setSpecial_leave(int special_leave) {
-        this.special_leave = special_leave;
+    public void setSpecial_leave(long special_leave) {
+        this.special_leave = this.special_leave- special_leave;
     }
 }
